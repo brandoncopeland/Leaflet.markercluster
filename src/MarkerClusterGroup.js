@@ -586,7 +586,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	_zoomOrSpiderfy: function (e) {
 		var map = this._map;
-		if (e.layer._childCount < this.options.spiderfyCountLimit || map.getMaxZoom() === map.getZoom()) {
+		if (e.layer._childCount <= this.options.spiderfyCountLimit || map.getMaxZoom() === map.getZoom()) {
 			if (this.options.spiderfyOnMaxZoom) {
 				e.layer.spiderfy();
 			}
@@ -626,9 +626,10 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 		var spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom,
 			showCoverageOnHover = this.options.showCoverageOnHover,
 			zoomToBoundsOnClick = this.options.zoomToBoundsOnClick,
+			spiderfyCountLimit = this.options.spiderfyCountLimit || 0,
 			map = this._map;
 
-		if (spiderfyOnMaxZoom || zoomToBoundsOnClick) {
+		if (spiderfyCountLimit || spiderfyOnMaxZoom || zoomToBoundsOnClick) {
 			this.off('clusterclick', this._zoomOrSpiderfy, this);
 		}
 		if (showCoverageOnHover) {
