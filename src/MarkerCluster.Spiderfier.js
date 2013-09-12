@@ -102,9 +102,6 @@ L.MarkerCluster.include({
 				m.setLatLng(m._preSpiderfyLatlng);
 				delete m._preSpiderfyLatlng;
 			}
-			if (m.setZIndexOffset) {
-				m.setZIndexOffset(0);
-			}
 
 			if (m._spiderLeg) {
 				map.removeLayer(m._spiderLeg);
@@ -128,9 +125,6 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 
 			m._preSpiderfyLatlng = m._latlng;
 			m.setLatLng(newPos);
-			if (m.setZIndexOffset) {
-				m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
-			}
 
 			fg.addLayer(m);
 
@@ -166,7 +160,6 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 
 			//If it is a marker, add it now and we'll animate it out
 			if (m.setOpacity) {
-				m.setZIndexOffset(1000000); //Make these appear on top of EVERYTHING
 				m.setOpacity(0);
 			
 				fg.addLayer(m);
@@ -328,7 +321,6 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 
 				if (m.setOpacity) {
 					m.setOpacity(1);
-					m.setZIndexOffset(0);
 				}
 
 				if (stillThereChildCount > 1) {
@@ -418,8 +410,6 @@ L.MarkerClusterGroup.include({
 			this._featureGroup.removeLayer(layer);
 
 			layer.setOpacity(1);
-			//Position will be fixed up immediately in _animationUnspiderfy
-			layer.setZIndexOffset(0);
 
 			this._map.removeLayer(layer._spiderLeg);
 			delete layer._spiderLeg;
