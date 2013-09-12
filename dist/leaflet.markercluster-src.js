@@ -1715,7 +1715,7 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 			fg.addLayer(m);
 
 
-			leg = new L.Polyline([this._latlng, newPos], { weight: 1.5, color: '#222' });
+			leg = new L.Polyline([this._latlng, newPos], { weight: 1.5, color: '#9D9892' });
 			map.addLayer(leg);
 			m._spiderLeg = leg;
 		}
@@ -1778,7 +1778,7 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 
 
 			//Add Legs.
-			leg = new L.Polyline([me._latlng, newPos], { weight: 1.5, color: '#222', opacity: initialLegOpacity });
+			leg = new L.Polyline([me._latlng, newPos], { weight: 1.5, color: '#9D9892', opacity: initialLegOpacity });
 			map.addLayer(leg);
 			m._spiderLeg = leg;
 
@@ -1815,7 +1815,7 @@ L.MarkerCluster.include(!L.DomUtil.TRANSITION ? {
 			leg._path.appendChild(anim);
 			anim.beginElement();
 		}
-		me.setOpacity(0.3);
+		me.setOpacity(0.5);
 
 		//Set the opacity of the spiderLegs back to their correct value
 		// The animations above override this until they complete.
